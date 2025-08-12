@@ -5,7 +5,13 @@ participant server
 
 browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
 activate server
-server-->>browser: Create a new note object and add it to notes array
+server-->>browser: Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
+deactivate server
+Note right of browser: The server creates a new note object and add it to notes array
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+activate server
+server-->>browser: HTML document
 deactivate server
 
 browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
